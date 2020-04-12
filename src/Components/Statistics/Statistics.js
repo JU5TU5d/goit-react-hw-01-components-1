@@ -1,19 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {
+  Section,
+  Title,
+  List,
+  Label,
+  Percentage,
+  ListItem,
+} from "./Statistics.styled";
+
+import colorCreator from "../Helpers/colorCreator";
 
 const Statistics = ({ stats, title }) => (
-  <section className="statistics">
-    {title && <h2 className="title">{title}</h2>}
-
-    <ul className="stat-list">
-      {stats.map((stat) => (
-        <li className="item" key={stat.id}>
-          <span className="label">{stat.label}</span>
-          <span className="percentage">{stat.percentage}%</span>
-        </li>
-      ))}
-    </ul>
-  </section>
+  <Section>
+    <Title>{title}</Title>
+    <List>
+      {stats.map((stat) => {
+        return (
+          <ListItem key={stat.id} colorCreator={colorCreator}>
+            <Label>{stat.label}</Label>
+            <Percentage>{stat.percentage}%</Percentage>
+          </ListItem>
+        );
+      })}
+    </List>
+  </Section>
 );
 
 Statistics.propTypes = {
@@ -25,6 +36,10 @@ Statistics.propTypes = {
       percentage: PropTypes.number,
     })
   ).isRequired,
+};
+
+ListItem.prototype = {
+  colorCreator: PropTypes.func,
 };
 
 export default Statistics;
