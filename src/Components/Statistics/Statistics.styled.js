@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Section = styled.section`
   width: 268px;
   height: 130px;
-  margin: auto;
+  margin: 0 auto 100px;
 `;
 
 export const Title = styled.h2`
