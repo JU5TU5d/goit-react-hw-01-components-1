@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import styles from "../FriendList.module.css";
 
 const FriendListItem = ({ isOnline, avatar, name }) =>
+  // нічого розумнішого за такий if/else для перевірки isOnline я тут придумати не зміг
+  // якщо я правильно розумію, то виуористання тут тернарника було б невалідним
+
   (isOnline && (
     <li className={styles.online}>
       <span className={styles.green}></span>
