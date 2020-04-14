@@ -9,11 +9,11 @@ import {
   ListItem,
 } from "./Statistics.styled";
 
-import colorCreator from "../Helpers/colorCreator";
+import colorCreator from "../../helpers/colorCreator";
 
 const Statistics = ({ stats, title }) => (
   <Section>
-    <Title>{title}</Title>
+    {title && <Title>{title}</Title>}
     <List>
       {stats.map((stat) => {
         return (
@@ -38,8 +38,12 @@ Statistics.propTypes = {
   ).isRequired,
 };
 
-ListItem.prototype = {
+ListItem.propTypes = {
   colorCreator: PropTypes.func,
+};
+
+Statistics.defaultProps = {
+  title: "",
 };
 
 export default Statistics;
